@@ -205,8 +205,8 @@ count=1
 
 N=75
 os.system("mkdir TRAIN"+str(N))
-os.system("cd TRAIN"+str(N))
-with open("feature_train.txt",'w') as f:
+#os.system("cd TRAIN"+str(N))
+with open("TRAIN"+str(N)+"/"+"feature_train.txt",'w') as f:
     f.close()
 
 #initWeightFile=" --weightFile ../train/TRAIN+"+str(N)+"/model_prev.txt"
@@ -238,12 +238,12 @@ for _ in range(15): #rounds of iterations
                         break
                     datap.append(t)
             
-            with open("feature_train.txt",'a+') as f:
+            with open("TRAIN"+str(N)+"/"+"feature_train.txt",'a+') as f:
                 printdata(datap,count,f)
             count+=1
             Iter+=1
-    TrainCommand="./svm_rank_learn -c 10 -t 0 -e 0.01 -d 2 -s 1 -r 1 -l 2 feature_train.txt model"+str(_)
-    TestCommand="./svm_rank_classify feature_train.txt model"+str(_)+" predictions"
+    TrainCommand="./svm_rank_learn -c 10 -t 0 -e 0.01 -d 2 -s 1 -r 1 -l 2 TRAIN"+str(N)+"/"+"feature_train.txt TRAIN"+str(N)+"/"+"model"+str(_)
+    TestCommand="./svm_rank_classify TRAIN"+str(N)+"/"+"feature_train.txt TRAIN"+str(N)+"/"+"model"+str(_)+" predictions"
     os.system(TrainCommand)
     os.system(TestCommand)
 
@@ -252,7 +252,7 @@ for _ in range(15): #rounds of iterations
     for i in range(1000):
         coef[i]=0
     len_coef=0
-    with open("model"+str(_),"r") as f:
+    with open("TRAIN"+str(N)+"/"+"model"+str(_),"r") as f:
         countl=0
         for line in f:
             countl+=1
@@ -262,7 +262,7 @@ for _ in range(15): #rounds of iterations
                 a,b=[eval(x) for x in t[i+1].split(':')]
                 coef[a]=b
                 len_coef=max(a,len_coef)
-    with open("model"+str(_)+"_coef.txt","w") as f:
+    with open("TRAIN"+str(N)+"/"+"model"+str(_)+"_coef.txt","w") as f:
         for i in range(len_coef):
             f.write("%.8lf "%(coef[i+1]))
             print(coef[i+1]," ")
