@@ -1,26 +1,23 @@
 project(ECBS)
 
-cmake_minimum_required (VERSION 3.7.1)
+cmake_minimum_required (VERSION 2.8.12)
 
-set(CMAKE_CXX_STANDARD 11)  # only useful when CMake version >= 3.1
-set(CMAKE_CXX_COMPILER "/usr/bin/g++")
-set(CMAKE_LINKER  "/usr/bin/ld")
-set(CMAKE_VERBOSE_MAKEFILE ON)  # Show all commands and parameters
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_COMPILER "/auto/usc/gnu/gcc/5.3.0/bin/gcc")
+set(CMAKE_C_COMPILER "/auto/usc/gnu/gcc/5.3.0/bin/gcc")
 
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -g -Wall --std=c++11")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG ")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
 
-include_directories("inc" "src")
-include_directories("/Users/apple/Desktop/hta/Courses/USC/MLandOpt/Project/ECBS-master/resources/sparsehash/include")
+include_directories("inc" "src" "/home/rcf-proj3/sc3/sparsehash/include")
 file(GLOB SOURCES "*src/*.cpp" "*.cpp")
-# file(GLOB SOURCES "*src/cbs.cpp" "src/epea.cpp" "src/epea_node.cpp" "src/ecbs.cpp" "src/basic_solver.cpp" 
-# "src/grid2D.cpp" "src/common.cpp" "src/node.cpp" "src/single_agent.cpp" "driver.cpp")
+
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 
 # Find Boost
-find_package( Boost 1.49.0 REQUIRED COMPONENTS program_options system filesystem)
-include_directories( ${Boost_INCLUDE_DIRS} )
+find_package(Boost 1.49.0 REQUIRED COMPONENTS program_options system filesystem)
+include_directories(${Boost_INCLUDE_DIRS})
 
-
-add_executable(ECBS ${SOURCES} )
-target_link_libraries(ECBS ${Boost_LIBRARIES})
+add_executable(ECBS ${SOURCES})
+target_link_libraries(ECBS ${Boost_LIBRARIES} -lstdc++ -lm)
