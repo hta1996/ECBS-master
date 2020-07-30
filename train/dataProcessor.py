@@ -198,8 +198,7 @@ exit()
 '''
 
 
-with open("feature_train.txt",'w') as f:
-    f.close()
+
 Iter=0
 count=1
 
@@ -207,6 +206,8 @@ count=1
 N=75
 os.system("mkdir TRAIN"+str(N))
 os.system("cd TRAIN"+str(N))
+with open("feature_train.txt",'w') as f:
+    f.close()
 
 #initWeightFile=" --weightFile ../train/TRAIN+"+str(N)+"/model_prev.txt"
 initWeightFile=""
@@ -216,12 +217,12 @@ for _ in range(15): #rounds of iterations
             Scen=scen+1
             #N=n*10+70
             featName="feature_"+str(Scen)+"_"+str(_)+"_"+str(N)+".txt"
-            featFile="../train/TRAIN+"+str(N)+"/"+featName
+            featFile="../train/TRAIN"+str(N)+"/"+featName
             #if _==0 and scen==0 and n==0:
             if _==0:
                 weightFile=initWeightFile
             else:
-                weightFile=" --weightFile ../train/TRAIN+"+str(N)+"/model"+str(_-1)+"_coef.txt"
+                weightFile=" --weightFile ../train/TRAIN"+str(N)+"/model"+str(_-1)+"_coef.txt"
             RunEcbs=RunEcbs0+str(Scen)+RunEcbs1+str(N)+RunEcbs2+featFile+weightFile
             print(RunEcbs)
             #if _>0:
