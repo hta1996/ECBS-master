@@ -138,8 +138,8 @@ RunEcbs0="./../build/ECBS -m ../instances/mapf-map/random-32-32-20.map -a ../ins
 TestEcbs0="./../build/ECBS -m ../instances/mapf-map/random-32-32-20.map -a ../instances/scen-random/random-32-32-20-random-"
 
 RunEcbs1=".scen -n "
-RunEcbs2=" -o tmp.csv -t 300 -w 1.1 -s 2 --featFile "
-TestEcbs2=" -o base3_%d_1.1.csv -t 300 --testing 1 -w 1.1 -s 2 "
+RunEcbs2=" -o TRAIN"+str(N)+"/"+"tmp.csv -t 300 -w 1.1 -s 2 --featFile "
+TestEcbs2=" -o TRAIN"+str(N)+"/"+"base3_%d_1.1.csv -t 300 --testing 1 -w 1.1 -s 2 "
 
 '''
 for i in range(11):
