@@ -45,9 +45,9 @@ public:
 		bool operator()(const ECBSNode* n1, const ECBSNode* n2) const 
 		{
             if (n1->score<-5e9){
-                /*if (n1->num_of_collisions == n2->num_of_collisions)
+                if (n1->num_of_collisions == n2->num_of_collisions)
                     return n1->g_val >= n2->g_val;  // Break ties towards shorter (overall) solutions
-                return n1->num_of_collisions >= n2->num_of_collisions;*/
+                return n1->num_of_collisions >= n2->num_of_collisions;
                 if (n1->num_of_pairs_of_collisions == n2->num_of_pairs_of_collisions)
                     return n1->g_val >= n2->g_val;  // Break ties towards shorter (overall) solutions
                 return n1->num_of_pairs_of_collisions >= n2->num_of_pairs_of_collisions;
