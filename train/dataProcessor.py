@@ -138,7 +138,7 @@ RunEcbs0="./../build/ECBS -m ../instances/mapf-map/random-32-32-20.map -a ../ins
 TestEcbs0="./../build/ECBS -m ../instances/mapf-map/random-32-32-20.map -a ../instances/scen-random/random-32-32-20-random-"
 
 RunEcbs1=".scen -n "
-RunEcbs2=" -o tmp.csv -t 600 -w 1.1 -s 2 --featFile "
+RunEcbs2=" -o tmp.csv -t 300 -w 1.1 -s 2 --featFile "
 TestEcbs2=" -o base3_%d_1.1.csv -t 300 --testing 1 -w 1.1 -s 2 "
 
 '''
@@ -157,7 +157,7 @@ for scen in range(25):
 
 exit()
 '''
-
+'''
 num_of_agent=[105,110,115]
 for N in num_of_agent:
     for scen in range(25):
@@ -170,6 +170,7 @@ for N in num_of_agent:
 exit()
 
 TestEcbs2=" -o test_%d_bestAUC_1.1.csv -t 300 --testing 1 -w 1.1 -s 2 "
+'''
 '''
 num_of_agent=[75,80,85,90,95,100]
 for N in num_of_agent:
@@ -202,14 +203,14 @@ with open("feature_train.txt",'w') as f:
 Iter=0
 count=1
 
-initWeightFile=" --weightFile ../train/model_prev.txt"
-#initWeightFile=""
+#initWeightFile=" --weightFile ../train/model_prev.txt"
+initWeightFile=""
 for _ in range(15): #rounds of iterations
     for scen in range(25):
         for n in range(1):
             Scen=scen+1
             #N=n*10+70
-            N=95
+            N=75
             featName="feature_"+str(Scen)+"_"+str(_)+"_"+str(N)+".txt"
             featFile="../train/"+featName
             #if _==0 and scen==0 and n==0:
@@ -219,8 +220,8 @@ for _ in range(15): #rounds of iterations
                 weightFile=" --weightFile ../train/model"+str(_-1)+"_coef.txt"
             RunEcbs=RunEcbs0+str(Scen)+RunEcbs1+str(N)+RunEcbs2+featFile+weightFile
             print(RunEcbs)
-            if _>0:
-                os.system(RunEcbs)
+            #if _>0:
+            os.system(RunEcbs)
             datap=[]
             with open(featName,'r') as f:
                 countd=0
