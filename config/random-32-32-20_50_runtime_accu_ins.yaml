@@ -1,0 +1,17 @@
+function: 'plot_runtime_accu_ins'
+cbs_types:
+- ECBS
+- MACBS
+- MAECBS
+focal_w:
+- 1.10
+map_name: random-32-32-20
+merge_th:
+- 1
+- 10
+num_of_agent: 50
+scen_dict:
+  even:
+  - 0
+  random:
+  - 0

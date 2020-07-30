@@ -1,0 +1,36 @@
+function: 'plot_time_soc'
+cbs_types:
+- ECBS
+- MACBS
+- MAECBS
+focal_w:
+- 1.00
+- 1.01
+- 1.02
+- 1.03
+- 1.04
+- 1.05
+- 1.06
+- 1.07
+- 1.08
+- 1.09
+- 1.1
+- 1.2
+- 1.3
+- 1.4
+- 1.5
+- 1.6
+- 1.7
+- 1.8
+- 1.9
+- 2.0
+map_name: random-32-32-20
+merge_th:
+- 10
+- 50
+num_of_agent: 20
+scen_dict:
+  even:
+  - 0
+  random:
+  - 0
