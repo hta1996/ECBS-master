@@ -132,7 +132,7 @@ with open(filename+"train.txt",'w') as f:
     
     
 
-
+N=75
 
 RunEcbs0="./../build/ECBS -m ../instances/mapf-map/random-32-32-20.map -a ../instances/scen-random/random-32-32-20-random-"
 TestEcbs0="./../build/ECBS -m ../instances/mapf-map/random-32-32-20.map -a ../instances/scen-random/random-32-32-20-random-"
@@ -203,7 +203,6 @@ Iter=0
 count=1
 
 
-N=75
 os.system("mkdir TRAIN"+str(N))
 #os.system("cd TRAIN"+str(N))
 with open("TRAIN"+str(N)+"/"+"feature_train.txt",'w') as f:
