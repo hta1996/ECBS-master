@@ -227,7 +227,7 @@ for _ in range(15): #rounds of iterations
             #if _>0:
             os.system(RunEcbs)
             datap=[]
-            with open(featName,'r') as f:
+            with open("TRAIN"+str(N)+"/"+featName,'r') as f:
                 countd=0
                 for line in f:
                     t=[x for x in line.split(' ')]
