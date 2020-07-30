@@ -1,17 +1,17 @@
-import gurobipy as grb
-import numpy as np
-import networkx as nx
+#import gurobipy as grb
+#import numpy as np
+#import networkx as nx
 import matplotlib.pyplot as plt
 from random import sample
 import math
 import random
-import osmnx as ox
-import shapefile
+#import osmnx as ox
+#import shapefile
 import csv
-import fiona
+#import fiona
 import sys
 import os
-import matplotlib.lines as mlines
+#import matplotlib.lines as mlines
 
 filename="featureMix_"
 
